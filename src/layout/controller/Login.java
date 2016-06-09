@@ -26,5 +26,6 @@ public class Login {
 
         Parent root = FXMLLoader.load(getClass().getResource("../main.fxml"));
         StageUtils.getStageFromEvent(event).setScene(StageUtils.createMainScene(root));
+
     }
 }
