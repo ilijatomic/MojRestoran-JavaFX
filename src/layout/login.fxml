@@ -22,6 +22,7 @@
             <RowConstraints vgrow="SOMETIMES" />
             <RowConstraints vgrow="SOMETIMES" />
             <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" minWidth="120.0" text="email" textAlignment="RIGHT">
@@ -53,6 +54,11 @@
                   <Font size="18.0" />
                </font>
             </Button>
+            <Label fx:id="login_error" text="Pogresno uneti podaci!" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
          </children>
       </GridPane>
    </children>

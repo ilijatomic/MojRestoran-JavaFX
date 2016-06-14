@@ -57,4 +57,16 @@ public class AppObject {
     public void updateDatabase() {
         dbRef.setValue(mojRestoran);
     }
+
+    public boolean checkLogin(String email, String password) {
+        if (!email.isEmpty() && !password.isEmpty()) {
+            for (Korisnik korisnik : mojRestoran.getKorisnikArrayList()) {
+                if (korisnik.getEmail().equals(email) && korisnik.getPassword().equals(password)) {
+                    ulogovanKorisnik = korisnik;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
