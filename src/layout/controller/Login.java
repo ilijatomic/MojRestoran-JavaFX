@@ -29,7 +29,7 @@ public class Login {
         String password = login_password.getText();
 
         if (AppObject.getInstance().checkLogin(email, password)) {
-            Parent root = FXMLLoader.load(getClass().getResource("../main.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../main_form.fxml"));
             StageUtils.getStageFromEvent(event).setScene(StageUtils.createMainScene(root));
         } else {
             login_error.setVisible(true);
