@@ -1,5 +1,6 @@
 package layout.controller;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import util.StageUtils;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,9 +27,12 @@ public class MainForm implements Initializable{
 
     public void showProfil() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../profile.fxml"));
-
         main_bPane.setCenter(root);
+    }
 
+    public void logout(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../login.fxml"));
+        StageUtils.getStageFromEvent(event).setScene(StageUtils.createMainScene(root));
     }
 
     @Override
