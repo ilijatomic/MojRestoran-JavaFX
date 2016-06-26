@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 /**
  * Created by Ilija on 1/2/2016.
  */
@@ -10,6 +8,9 @@ public class Podkategorija {
     private String id;
     private String naziv;
     private Kategorija kategorija;
+
+    public Podkategorija() {
+    }
 
     public Podkategorija(String id, String naziv, Kategorija kategorija) {
         this.id = id;

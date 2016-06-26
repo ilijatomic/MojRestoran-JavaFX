@@ -1,5 +1,6 @@
 package util;
 
+import com.google.common.eventbus.EventBus;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
@@ -20,6 +21,8 @@ public class AppObject {
 
     private MojRestoran mojRestoran = null;
     private Korisnik ulogovanKorisnik;
+
+    private EventBus eventBus;
 
     public static AppObject getInstance() {
         if (appObject == null)
@@ -45,6 +48,8 @@ public class AppObject {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mojRestoran = dataSnapshot.getValue(MojRestoran.class);
+                System.out.println("FIREBASE_DATACHANGE");
+                checkLogin("ilija@email.com", "qwe");
             }
 
             @Override
@@ -62,11 +67,26 @@ public class AppObject {
         if (!email.isEmpty() && !password.isEmpty()) {
             for (Korisnik korisnik : mojRestoran.getKorisnikArrayList()) {
                 if (korisnik.getEmail().equals(email) && korisnik.getPassword().equals(password)) {
-                    ulogovanKorisnik = korisnik;
+                    setUlogovanKorisnik(korisnik);
                     return true;
                 }
             }
         }
         return false;
+    }
+
+    public void setUlogovanKorisnik(Korisnik ulogovanKorisnik) {
+        this.ulogovanKorisnik = ulogovanKorisnik;
+    }
+
+    public Korisnik getUlogovanKorisnik() {
+        return ulogovanKorisnik;
+    }
+
+
+    public EventBus getEventBus() {
+        if (eventBus == null)
+            eventBus = new EventBus();
+        return eventBus;
     }
 }

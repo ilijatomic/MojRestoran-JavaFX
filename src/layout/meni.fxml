@@ -1,11 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-
-<TabPane tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/null">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<TabPane tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.controller.Meni">
   <tabs>
-    <Tab text="Untitled Tab 1" />
-    <Tab text="Untitled Tab 2" />
+    <Tab text="Kategorije">
+         <content>
+            <VBox>
+               <children>
+                  <HBox spacing="15.0">
+                     <children>
+                        <Button fx:id="dodaj" mnemonicParsing="false" text="Dodaj">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="search" prefWidth="200.0" promptText="naziv">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </HBox>
+                  <TableView fx:id="kategorija" maxWidth="552.0" minHeight="600.0">
+                    <columns>
+                      <TableColumn fx:id="naziv" minWidth="400.0" prefWidth="400.0" text="Naziv" />
+                      <TableColumn fx:id="izmeni" minWidth="50.0" prefWidth="75.0" resizable="false" text="Izmeni" />
+                        <TableColumn fx:id="obrisi" minWidth="50.0" prefWidth="75.0" resizable="false" text="Obrisi" />
+                    </columns>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </TableView>
+               </children>
+            </VBox>
+         </content></Tab>
+    <Tab text="Podkategorije" />
+      <Tab text="Stavke" />
   </tabs>
 </TabPane>

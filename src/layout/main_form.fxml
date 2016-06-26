@@ -4,8 +4,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-
 <BorderPane fx:id="main_bPane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.controller.MainForm">
     <top>
         <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -15,11 +13,7 @@
             </items>
         </ToolBar>
     </top>
-    <left>
-        <VBox BorderPane.alignment="CENTER">
-            <children>
-                <ListView fx:id="main_list" />
-            </children>
-        </VBox>
-    </left>
+   <left>
+      <ListView fx:id="main_list" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" BorderPane.alignment="CENTER" />
+   </left>
 </BorderPane>
