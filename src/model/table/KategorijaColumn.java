@@ -1,6 +1,7 @@
 package model.table;
 
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -36,15 +37,17 @@ public class KategorijaColumn {
         obrisi.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.showAndWait();
                 for (Podkategorija podkategorija : AppObject.getInstance().getMojRestoran().getPodkategorijaArrayList()) {
                     if (podkategorija.getKategorija().getId().equals(id)) {
-                        // TODO alert dialog
+
                         return;
                     }
                 }
                 for (Kategorija kategorija : AppObject.getInstance().getMojRestoran().getKategorijaArrayList()) {
                     if (kategorija.getId().equals(id)) {
-                        AppObject.getInstance().getMojRestoran().getKategorijaArrayList().remove(kategorija);
+                        //AppObject.getInstance().getMojRestoran().getKategorijaArrayList().remove(kategorija);
                         AppObject.getInstance().updateDatabase();
                         AppObject.getInstance().getEventBus().post(new DataChange(DataChange.Type.KATEGORIJA));
                         break;
