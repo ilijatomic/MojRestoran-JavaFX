@@ -1,4 +1,4 @@
-package layout.controller;
+package layout.ui.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,7 +29,7 @@ public class Login {
         String password = login_password.getText();
 
         if (AppObject.getInstance().checkLogin(email, password)) {
-            Parent root = FXMLLoader.load(getClass().getResource("../main_form.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../ui/main_form.fxml"));
             StageUtils.getStageFromEvent(event).setScene(StageUtils.createMainScene(root));
         } else {
             login_error.setVisible(true);

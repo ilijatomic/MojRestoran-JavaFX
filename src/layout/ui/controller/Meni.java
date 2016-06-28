@@ -1,30 +1,35 @@
-package layout.controller;
+package layout.ui.controller;
 
 import com.google.common.eventbus.Subscribe;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import layout.dialog.DodajKategorija;
 import model.Kategorija;
 import model.table.KategorijaColumn;
 import util.AppObject;
+import util.Validation;
 import util.event.DataChange;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.UUID;
+import java.util.function.Consumer;
 
 /**
  * Created by ilija.tomic on 6/17/2016.
  */
 public class Meni implements Initializable {
 
-    @FXML
-    private Button dodaj;
     @FXML
     private TextField search;
 
@@ -38,6 +43,7 @@ public class Meni implements Initializable {
     private TableView<KategorijaColumn> kategorija;
 
     private ObservableList<KategorijaColumn> kategorijaObservableList;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -69,6 +75,12 @@ public class Meni implements Initializable {
             }
             kategorija.refresh();
         }
+    }
+
+    public void dodaj_kategoriju() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../dialog/kategorija.fxml")).load();
+        DodajKategorija dodajKategorija = loader.getController();
+
     }
 
 }

@@ -1,4 +1,4 @@
-package layout.controller;
+package layout.ui.controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -29,13 +29,13 @@ public class MainForm implements Initializable {
     private ListView<String> main_list;
 
     public void showProfil() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../profile.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../ui/profile.fxml"));
         main_bPane.setCenter(root);
     }
 
     public void logout(ActionEvent event) throws IOException {
         AppObject.getInstance().setUlogovanKorisnik(null);
-        Parent root = FXMLLoader.load(getClass().getResource("../login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../ui/login.fxml"));
         StageUtils.getStageFromEvent(event).setScene(StageUtils.createMainScene(root));
     }
 

@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<FlowPane alignment="CENTER" minHeight="150.0" prefWrapLength="600.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.controller.Login">
+<FlowPane alignment="CENTER" minHeight="150.0" prefWrapLength="600.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.ui.controller.Login">
    <children>
       <GridPane alignment="CENTER_RIGHT" hgap="10.0" vgap="10.0">
          <columnConstraints>
