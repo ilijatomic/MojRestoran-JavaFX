@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<DialogPane fx:id="dialogPane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.dialog.DodajKategorija">
+<DialogPane fx:id="dialogPane" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.dialog.DodajKategorija">
    <content>
       <VBox>
          <children>
-            <TextField fx:id="naziv" minWidth="-Infinity" prefWidth="250.0" promptText="naziv" text="test">
+            <TextField fx:id="naziv" minWidth="-Infinity" prefWidth="250.0" promptText="naziv">
                <font>
                   <Font size="18.0" />
                </font>

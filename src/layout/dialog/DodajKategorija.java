@@ -1,5 +1,7 @@
 package layout.dialog;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,7 +21,7 @@ import java.util.UUID;
 /**
  * Created by ilija.tomic on 6/28/2016.
  */
-public class DodajKategorija implements Initializable {
+public class DodajKategorija {
 
     @FXML
     private TextField naziv;
@@ -28,26 +30,41 @@ public class DodajKategorija implements Initializable {
 
     private ArrayList<TextField> textFields = new ArrayList<>();
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("INIT");
+    public void show(String id) {
+        Kategorija kategorija = null;
+        if (id != null) {
+            kategorija = AppObject.getInstance().getKategorijaById(id);
+            naziv.setText(kategorija.getNaziv());
+        }
+        Dialog kategorijaDialog = new Dialog();
+        kategorijaDialog.setDialogPane(dialogPane);
+        kategorijaDialog.getDialogPane().getButtonTypes().clear();
+        kategorijaDialog.getDialogPane().getButtonTypes().add(new ButtonType("Odustani", ButtonBar.ButtonData.CANCEL_CLOSE));
+        kategorijaDialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        kategorijaDialog.getDialogPane().lookupButton(ButtonType.OK).addEventFilter(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                textFields.clear();
+                textFields.add(naziv);
+                if (!Validation.checkTextFields(textFields)) {
+                    event.consume();
+                }
+            }
+        });
 
-        Dialog kategorija = new Dialog();
-        kategorija.setDialogPane(dialogPane);
-        kategorija.getDialogPane().getButtonTypes().add(new ButtonType("Odustani", ButtonBar.ButtonData.CANCEL_CLOSE));
-        kategorija.getDialogPane().getButtonTypes().add(ButtonType.OK);
-        Optional result = kategorija.showAndWait();
+        Optional result = kategorijaDialog.showAndWait();
 
         if (result.get() == ButtonType.OK) {
-            textFields.clear();
-            textFields.add(naziv);
-            if (Validation.checkTextFields(textFields)) {
-                String randomId = UUID.randomUUID().toString();
-                String name = naziv.getText();
-                AppObject.getInstance().getMojRestoran().getKategorijaArrayList().add(new Kategorija(randomId, name));
+            if (id == null) {
+                String uuid = UUID.randomUUID().toString();
+                String nazivKategorije = naziv.getText();
+                AppObject.getInstance().getMojRestoran().getKategorijaArrayList().add(new Kategorija(uuid, nazivKategorije));
                 AppObject.getInstance().updateDatabase();
-                AppObject.getInstance().getEventBus().post(new DataChange(DataChange.Type.KATEGORIJA));
+            } else {
+                kategorija.setNaziv(naziv.getText());
+                AppObject.getInstance().updateDatabase();
             }
+            AppObject.getInstance().getEventBus().post(new DataChange(DataChange.Type.KATEGORIJA));
         }
     }
 }

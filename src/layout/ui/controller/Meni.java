@@ -78,9 +78,10 @@ public class Meni implements Initializable {
     }
 
     public void dodaj_kategoriju() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../dialog/kategorija.fxml")).load();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../dialog/kategorija.fxml"));
+        loader.load();
         DodajKategorija dodajKategorija = loader.getController();
-
+        dodajKategorija.show(null);
     }
 
 }

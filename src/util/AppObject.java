@@ -4,8 +4,10 @@ import com.google.common.eventbus.EventBus;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
+import model.Kategorija;
 import model.Korisnik;
 import model.MojRestoran;
+import model.Sto;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -48,7 +50,7 @@ public class AppObject {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mojRestoran = dataSnapshot.getValue(MojRestoran.class);
-                System.out.println("FIREBASE_DATACHANGE");
+                System.out.println("FIREBASE_DATABASE_DOWNLOAD");
                 checkLogin("ilija@email.com", "qwe");
             }
 
@@ -88,5 +90,26 @@ public class AppObject {
         if (eventBus == null)
             eventBus = new EventBus();
         return eventBus;
+    }
+
+    public Korisnik getKorisnikById(String idKorisnik) {
+        for (Korisnik korisnik : mojRestoran.getKorisnikArrayList())
+            if (korisnik.getId().equals(idKorisnik))
+                return korisnik;
+        return null;
+    }
+
+    public Sto getStoById(String idSto) {
+        for (Sto sto : mojRestoran.getStoArrayList())
+            if (sto.getId().equals(idSto))
+                return sto;
+        return null;
+    }
+
+    public Kategorija getKategorijaById(String idKategorija) {
+        for (Kategorija kategorija : mojRestoran.getKategorijaArrayList())
+            if (kategorija.getId().equals(idKategorija))
+                return kategorija;
+        return null;
     }
 }
