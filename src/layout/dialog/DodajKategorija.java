@@ -3,19 +3,14 @@ package layout.dialog;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import model.Kategorija;
 import util.AppObject;
 import util.Validation;
 import util.event.DataChange;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
-import java.util.ResourceBundle;
 import java.util.UUID;
 
 /**
@@ -54,7 +49,7 @@ public class DodajKategorija {
 
         Optional result = kategorijaDialog.showAndWait();
 
-        if (result.get() == ButtonType.OK) {
+        if (result.isPresent() && result.get() == ButtonType.OK) {
             if (id == null) {
                 String uuid = UUID.randomUUID().toString();
                 String nazivKategorije = naziv.getText();

@@ -2,8 +2,6 @@ package model.table;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
@@ -18,7 +16,6 @@ import util.AppObject;
 import util.event.DataChange;
 
 import java.io.IOException;
-import java.util.Optional;
 
 /**
  * Created by Ilija on 6/26/2016.
@@ -32,14 +29,21 @@ public class KategorijaColumn {
     private Button obrisi;
 
     public KategorijaColumn(Kategorija kategorija) {
-        this.id = kategorija.getId();
-        this.naziv = kategorija.getNaziv();
+        id = kategorija.getId();
+        naziv = kategorija.getNaziv();
 
         izmeni = new Button("", new ImageView(new Image(getClass().getResourceAsStream("../../edit.png"))));
         izmeni.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../layout/dialog/kategorija.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                DodajKategorija dodajKategorija = loader.getController();
+                dodajKategorija.show(id);
             }
         });
         obrisi = new Button("", new ImageView(new Image(getClass().getResourceAsStream("../../delete.png"))));

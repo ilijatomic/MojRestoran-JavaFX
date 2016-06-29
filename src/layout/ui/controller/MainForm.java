@@ -29,7 +29,7 @@ public class MainForm implements Initializable {
     private ListView<String> main_list;
 
     public void showProfil() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../ui/profile.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../profile.fxml"));
         main_bPane.setCenter(root);
     }
 

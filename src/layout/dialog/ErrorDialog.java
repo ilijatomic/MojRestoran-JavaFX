@@ -1,7 +1,6 @@
 package layout.dialog;
 
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 
 /**
  * Created by ilija.tomic on 6/27/2016.
