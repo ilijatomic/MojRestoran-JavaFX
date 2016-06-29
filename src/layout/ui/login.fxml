@@ -4,55 +4,60 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<FlowPane alignment="CENTER" minHeight="150.0" prefWrapLength="600.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.ui.controller.Login">
-   <children>
-      <GridPane alignment="CENTER_RIGHT" hgap="10.0" vgap="10.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" />
-            <ColumnConstraints hgrow="SOMETIMES" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" minWidth="120.0" text="email" textAlignment="RIGHT">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" minWidth="120.0" text="sifra" textAlignment="RIGHT" GridPane.rowIndex="1">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <TextField fx:id="login_email" minWidth="250.0" GridPane.columnIndex="1">
+<FlowPane alignment="CENTER" minHeight="150.0" prefWrapLength="600.0" xmlns="http://javafx.com/javafx/null"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.ui.controller.Login">
+    <children>
+        <GridPane alignment="CENTER_RIGHT" hgap="10.0" vgap="10.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES"/>
+                <ColumnConstraints hgrow="SOMETIMES"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" minWidth="120.0" text="email"
+                       textAlignment="RIGHT">
+                    <font>
+                        <Font size="24.0"/>
+                    </font>
+                </Label>
+                <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" minWidth="120.0" text="sifra"
+                       textAlignment="RIGHT" GridPane.rowIndex="1">
+                    <font>
+                        <Font size="24.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="login_email" minWidth="250.0" GridPane.columnIndex="1">
 
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </TextField>
-            <PasswordField fx:id="login_password" minWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </PasswordField>
-            <Button alignment="CENTER" minWidth="130.0" mnemonicParsing="false" onAction="#login" text="Uloguj se" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Label fx:id="login_error" text="Pogresno uneti podaci!" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-         </children>
-      </GridPane>
-   </children>
+                    <GridPane.margin>
+                        <Insets/>
+                    </GridPane.margin>
+                </TextField>
+                <PasswordField fx:id="login_password" minWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets/>
+                    </GridPane.margin>
+                </PasswordField>
+                <Button alignment="CENTER" minWidth="130.0" mnemonicParsing="false" onAction="#login" text="Uloguj se"
+                        textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <GridPane.margin>
+                        <Insets/>
+                    </GridPane.margin>
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Button>
+                <Label fx:id="login_error" text="Pogresno uneti podaci!" textFill="RED" visible="false"
+                       GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <font>
+                        <Font size="22.0"/>
+                    </font>
+                </Label>
+            </children>
+        </GridPane>
+    </children>
 </FlowPane>

@@ -52,6 +52,7 @@ public class MainForm implements Initializable {
                 }
             }
         });
+        // TODO show meni on init, once user loged in
     }
 
     private void showMenuItem(int item) throws IOException {

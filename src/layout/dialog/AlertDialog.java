@@ -18,5 +18,7 @@ public class AlertDialog {
         alert.setContentText(message);
         alert.getButtonTypes().add(new ButtonType("Zatvori", ButtonBar.ButtonData.CANCEL_CLOSE));
         return alert.showAndWait();
-    };
+    }
+
+    ;
 }

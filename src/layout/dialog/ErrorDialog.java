@@ -13,5 +13,7 @@ public class ErrorDialog {
         alert.setTitle(title);
         alert.setContentText(message);
         alert.show();
-    };
+    }
+
+    ;
 }

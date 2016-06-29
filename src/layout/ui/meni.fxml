@@ -2,11 +2,12 @@
 
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+
 <TabPane fx:id="meni_tabpane" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.60"
          xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.ui.controller.Meni">
     <tabs>
         <Tab fx:id="kategorijaTab" text="Kategorije"/>
-        <Tab text="Podkategorije"/>
-        <Tab text="Stavke"/>
+        <Tab fx:id="podkategorijaTab" text="Podkategorije"/>
+        <Tab fx:id="stavkeTab" text="Stavke"/>
     </tabs>
 </TabPane>
