@@ -116,4 +116,11 @@ public class AppObject {
                 return podkategorija;
         return null;
     }
+
+    public Stavka getStavkaById(String idStavka) {
+        for (Stavka stavka : mojRestoran.getStavkaArrayList())
+            if (stavka.getId().equals(idStavka))
+                return stavka;
+        return null;
+    }
 }

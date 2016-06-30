@@ -33,6 +33,7 @@ public class DodajKategorija {
         }
         Dialog kategorijaDialog = new Dialog();
         kategorijaDialog.setDialogPane(dialogPane);
+        kategorijaDialog.setTitle(id != null ? "Izmeni kategoriju" : "Dodaj kategoriju");
         kategorijaDialog.getDialogPane().getButtonTypes().clear();
         kategorijaDialog.getDialogPane().getButtonTypes().add(new ButtonType("Odustani", ButtonBar.ButtonData.CANCEL_CLOSE));
         kategorijaDialog.getDialogPane().getButtonTypes().add(ButtonType.OK);

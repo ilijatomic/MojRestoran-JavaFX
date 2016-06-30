@@ -10,41 +10,46 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fillWidth="false" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.ui.controller.StavkaTab">
+<VBox fillWidth="false" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="layout.ui.controller.StavkaTab">
     <children>
         <HBox spacing="15.0">
             <children>
                 <Button mnemonicParsing="false" onAction="#dodaj_stavku" text="Dodaj">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </Button>
-                <ChoiceBox fx:id="kategorija" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" />
-                <ChoiceBox fx:id="podkategorija" layoutX="82.0" layoutY="20.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" />
-                <TextField fx:id="search" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" promptText="naziv">
+                <ChoiceBox fx:id="kategorija" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"/>
+                <ChoiceBox fx:id="podkategorija" layoutX="82.0" layoutY="20.0" maxWidth="-Infinity" minWidth="-Infinity"
+                           prefWidth="130.0"/>
+                <TextField fx:id="search" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0"
+                           promptText="naziv">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </TextField>
             </children>
             <VBox.margin>
-                <Insets left="10.0" />
+                <Insets left="10.0"/>
             </VBox.margin>
             <padding>
-                <Insets bottom="10.0" top="10.0" />
+                <Insets bottom="10.0" top="10.0"/>
             </padding>
         </HBox>
         <TableView fx:id="stavka">
             <columns>
-                <TableColumn fx:id="nazivkat" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Kategorija" />
-                <TableColumn fx:id="nazivpodkat" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Podkategorija" />
-                <TableColumn fx:id="nazivstavke" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Stavka" />
-            <TableColumn fx:id="cena" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Cena" />
-                <TableColumn fx:id="izmeni" maxWidth="75.0" minWidth="50.0" prefWidth="75.0" resizable="false" text="Izmeni" />
-                <TableColumn fx:id="obrisi" maxWidth="75.0" minWidth="50.0" prefWidth="75.0" resizable="false" text="Obrisi" />
+                <TableColumn fx:id="nazivkat" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Kategorija"/>
+                <TableColumn fx:id="nazivpod" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Podkategorija"/>
+                <TableColumn fx:id="nazivstavke" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Stavka"/>
+                <TableColumn fx:id="cena" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Cena"/>
+                <TableColumn fx:id="izmeni" maxWidth="75.0" minWidth="50.0" prefWidth="75.0" resizable="false"
+                             text="Izmeni"/>
+                <TableColumn fx:id="obrisi" maxWidth="75.0" minWidth="50.0" prefWidth="75.0" resizable="false"
+                             text="Obrisi"/>
             </columns>
             <VBox.margin>
-                <Insets left="10.0" />
+                <Insets left="10.0"/>
             </VBox.margin>
         </TableView>
     </children>

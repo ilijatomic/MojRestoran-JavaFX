@@ -64,6 +64,7 @@ public class PodkategorijaTab implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Kategorija> observable, Kategorija oldValue, Kategorija newValue) {
                 selectedKategorija = kategorija.getValue();
+                pretraga();
             }
         });
         kategorija.getSelectionModel().selectFirst();
@@ -104,8 +105,11 @@ public class PodkategorijaTab implements Initializable {
         } else {
             podkategorijaObservableList.clear();
             for (Podkategorija podkategorija : AppObject.getInstance().getMojRestoran().getPodkategorijaArrayList()) {
-                if (podkategorija.getNaziv().toLowerCase().startsWith(search.getText().toLowerCase()))
-                    podkategorijaObservableList.add(new PodkategorijaColumn(podkategorija));
+                if (!podkategorija.getNaziv().toLowerCase().startsWith(search.getText().toLowerCase()))
+                    continue;
+                if (!podkategorija.getKategorija().getId().equals(selectedKategorija.getId()) && selectedKategorija.getId() != null)
+                    continue;
+                podkategorijaObservableList.add(new PodkategorijaColumn(podkategorija));
             }
             podkategorija.refresh();
         }

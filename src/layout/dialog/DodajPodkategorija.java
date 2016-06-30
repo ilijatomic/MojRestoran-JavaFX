@@ -62,6 +62,7 @@ public class DodajPodkategorija implements Initializable {
 
         Dialog podkategorijaDialog = new Dialog();
         podkategorijaDialog.setDialogPane(dialogPane);
+        podkategorijaDialog.setTitle(id != null ? "Izmeni podkategoriju" : "Dodaj podkategoriju");
         podkategorijaDialog.getDialogPane().getButtonTypes().clear();
         podkategorijaDialog.getDialogPane().getButtonTypes().add(new ButtonType("Odustani", ButtonBar.ButtonData.CANCEL_CLOSE));
         podkategorijaDialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
@@ -73,7 +74,7 @@ public class DodajPodkategorija implements Initializable {
                 if (!Validation.checkTextFields(textFields)) {
                     event.consume();
                 }
-                if (selectedKat.getId() == null) {
+                if (kategorija.getValue().getId().equals("")) {
                     kategorija.setStyle("-fx-border-color: red");
                     event.consume();
                 }
