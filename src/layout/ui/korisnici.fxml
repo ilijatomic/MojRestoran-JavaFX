@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fillWidth="false" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.ui.controller.Korisnici">
+   <children>
+      <VBox fillWidth="false">
+         <children>
+            <HBox fillHeight="false" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Dodaj" />
+                  <ChoiceBox maxWidth="-Infinity" prefWidth="80.0" />
+                  <TextField maxWidth="-Infinity" prefWidth="120.0" promptText="ime" />
+                  <TextField layoutX="84.0" layoutY="20.0" maxWidth="-Infinity" prefWidth="120.0" promptText="prezime" />
+                  <TextField layoutX="261.0" layoutY="20.0" maxWidth="-Infinity" prefWidth="150.0" promptText="email" />
+                  <TextField layoutX="438.0" layoutY="20.0" maxWidth="-Infinity" prefWidth="150.0" promptText="br tel" text=" " />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </padding></HBox>
+         </children>
+      </VBox>
+      <TableView>
+        <columns>
+          <TableColumn editable="false" maxWidth="125.0" prefWidth="125.0" resizable="false" sortable="false" text="Ime" />
+            <TableColumn editable="false" maxWidth="125.0" prefWidth="125.0" resizable="false" sortable="false" text="Prezime" />
+            <TableColumn editable="false" maxWidth="200.0" prefWidth="200.0" resizable="false" sortable="false" text="email" />
+            <TableColumn editable="false" maxWidth="150.0" prefWidth="150.0" resizable="false" sortable="false" text="Br. tel" />
+            <TableColumn editable="false" maxWidth="80.0" resizable="false" sortable="false" text="Tip" />
+            <TableColumn editable="false" maxWidth="75.0" prefWidth="75.0" resizable="false" sortable="false" text="Izmeni" />
+            <TableColumn editable="false" maxWidth="75.0" prefWidth="75.0" resizable="false" sortable="false" text="Obrisi" />
+        </columns>
+      </TableView>
+   </children>
+</VBox>

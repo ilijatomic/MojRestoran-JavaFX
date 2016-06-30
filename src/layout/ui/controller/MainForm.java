@@ -56,9 +56,14 @@ public class MainForm implements Initializable {
     }
 
     private void showMenuItem(int item) throws IOException {
+        Parent root;
         switch (item) {
             case 0:
-                Parent root = FXMLLoader.load(getClass().getResource("../meni.fxml"));
+                root = FXMLLoader.load(getClass().getResource("../meni.fxml"));
+                main_bPane.setCenter(root);
+                break;
+            case 1:
+                root = FXMLLoader.load(getClass().getResource("../korisnici.fxml"));
                 main_bPane.setCenter(root);
                 break;
         }

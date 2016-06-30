@@ -4,7 +4,7 @@ package util.event;
  * Created by Ilija on 6/26/2016.
  */
 public class DataChange {
-    public enum Type {KATEGORIJA, PODKATEGORIJA, STAVKA}
+    public enum Type {KATEGORIJA, PODKATEGORIJA, STAVKA, KORISNIK, STO}
 
     private Type type;
 
