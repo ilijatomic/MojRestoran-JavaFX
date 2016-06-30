@@ -8,12 +8,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import layout.dialog.AlertDialog;
-import layout.dialog.DodajKategorija;
 import layout.dialog.DodajKorisnika;
-import layout.dialog.ErrorDialog;
-import model.Kategorija;
 import model.Korisnik;
-import model.Podkategorija;
 import util.AppObject;
 import util.event.DataChange;
 
@@ -72,5 +68,37 @@ public class KorisnikColum {
                 }
             }
         });
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getIme() {
+        return ime;
+    }
+
+    public String getPrezime() {
+        return prezime;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getBrtel() {
+        return brtel;
+    }
+
+    public String getTip() {
+        return tip;
+    }
+
+    public Button getIzmeni() {
+        return izmeni;
+    }
+
+    public Button getObrisi() {
+        return obrisi;
     }
 }
