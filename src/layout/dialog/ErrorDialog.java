@@ -14,6 +14,4 @@ public class ErrorDialog {
         alert.setContentText(message);
         alert.show();
     }
-
-    ;
 }

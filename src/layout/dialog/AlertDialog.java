@@ -16,9 +16,7 @@ public class AlertDialog {
         alert.setHeaderText(null);
         alert.setTitle(title);
         alert.setContentText(message);
-        alert.getButtonTypes().add(new ButtonType("Zatvori", ButtonBar.ButtonData.CANCEL_CLOSE));
+        alert.getButtonTypes().add(new ButtonType("Odustani", ButtonBar.ButtonData.CANCEL_CLOSE));
         return alert.showAndWait();
     }
-
-    ;
 }

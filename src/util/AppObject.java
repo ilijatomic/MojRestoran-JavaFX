@@ -4,10 +4,7 @@ import com.google.common.eventbus.EventBus;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
-import model.Kategorija;
-import model.Korisnik;
-import model.MojRestoran;
-import model.Sto;
+import model.*;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -110,6 +107,13 @@ public class AppObject {
         for (Kategorija kategorija : mojRestoran.getKategorijaArrayList())
             if (kategorija.getId().equals(idKategorija))
                 return kategorija;
+        return null;
+    }
+
+    public Podkategorija getPodkategorijaById(String idPodkategorija) {
+        for (Podkategorija podkategorija : mojRestoran.getPodkategorijaArrayList())
+            if (podkategorija.getId().equals(idPodkategorija))
+                return podkategorija;
         return null;
     }
 }

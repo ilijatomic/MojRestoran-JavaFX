@@ -9,59 +9,62 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import layout.dialog.AlertDialog;
 import layout.dialog.DodajKategorija;
+import layout.dialog.DodajPodkategorija;
 import layout.dialog.ErrorDialog;
 import model.Kategorija;
 import model.Podkategorija;
+import model.Stavka;
 import util.AppObject;
 import util.event.DataChange;
 
 import java.io.IOException;
 
 /**
- * Created by Ilija on 6/26/2016.
+ * Created by Ilija on 6/30/2016.
  */
-public class KategorijaColumn {
-
+public class PodkategorijaColumn {
     private String id;
-    private String naziv;
+    private String nazivkat;
+    private String nazivpod;
 
     private Button izmeni;
     private Button obrisi;
 
-    public KategorijaColumn(Kategorija kategorija) {
-        id = kategorija.getId();
-        naziv = kategorija.getNaziv();
+    public PodkategorijaColumn(Podkategorija podkategorija) {
+        id = podkategorija.getId();
+        nazivpod = podkategorija.getNaziv();
+        nazivkat = podkategorija.getKategorija().getNaziv();
 
         izmeni = new Button("", new ImageView(new Image(getClass().getResourceAsStream("../../edit.png"))));
         izmeni.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../layout/dialog/kategorija.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../layout/dialog/podkategorija.fxml"));
                 try {
                     loader.load();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                DodajKategorija dodajKategorija = loader.getController();
-                dodajKategorija.show(id);
+                DodajPodkategorija dodajPodkategorija = loader.getController();
+                dodajPodkategorija.show(id);
             }
         });
         obrisi = new Button("", new ImageView(new Image(getClass().getResourceAsStream("../../delete.png"))));
         obrisi.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                for (Podkategorija podkategorija : AppObject.getInstance().getMojRestoran().getPodkategorijaArrayList()) {
-                    if (podkategorija.getKategorija().getId().equals(id)) {
-                        ErrorDialog.show("Kategorija!", "Kategorija ne moze biti obrisana jer sadrzi podkategorije!");
+                for (Stavka stavka : AppObject.getInstance().getMojRestoran().getStavkaArrayList()) {
+                    if (stavka.getPodkategorija().getId().equals(id)) {
+                        ErrorDialog.show("Obrisi podategoriju", "DPodkategorija ne moze biti obrisana jer sadrzi stavke!");
                         return;
                     }
                 }
-                if (AlertDialog.show("Obrisi kategoriju", "Da li ste sigurni da zelite da obriste kategoriju?").get() == ButtonType.OK) {
-                    for (Kategorija kategorija : AppObject.getInstance().getMojRestoran().getKategorijaArrayList()) {
-                        if (kategorija.getId().equals(id)) {
-                            AppObject.getInstance().getMojRestoran().getKategorijaArrayList().remove(kategorija);
+                if (AlertDialog.show("Obrisi podkategoriju", "Da li ste sigurni da zelite da obriste podkategoriju?").get() == ButtonType.OK) {
+                    for (Podkategorija podkategorija : AppObject.getInstance().getMojRestoran().getPodkategorijaArrayList()) {
+                        if (podkategorija.getId().equals(id)) {
+                            AppObject.getInstance().getMojRestoran().getPodkategorijaArrayList().remove(podkategorija);
                             AppObject.getInstance().updateDatabase();
-                            AppObject.getInstance().getEventBus().post(new DataChange(DataChange.Type.KATEGORIJA));
+                            AppObject.getInstance().getEventBus().post(new DataChange(DataChange.Type.PODKATEGORIJA));
                             break;
                         }
                     }
@@ -74,8 +77,12 @@ public class KategorijaColumn {
         return id;
     }
 
-    public String getNaziv() {
-        return naziv;
+    public String getNazivkat() {
+        return nazivkat;
+    }
+
+    public String getNazivpod() {
+        return nazivpod;
     }
 
     public Button getIzmeni() {

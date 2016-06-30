@@ -9,9 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
@@ -36,13 +34,13 @@ public class KategorijaTab implements Initializable {
     @FXML
     private TableColumn<KategorijaColumn, String> naziv;
     @FXML
-    private TableColumn<KategorijaColumn, String> izmeni;
+    private TableColumn<KategorijaColumn, Button> izmeni;
     @FXML
-    private TableColumn<KategorijaColumn, String> obrisi;
+    private TableColumn<KategorijaColumn, Button> obrisi;
     @FXML
     private TableView<KategorijaColumn> kategorija;
 
-    private ObservableList<KategorijaColumn> kategorijaObservableList;
+    private ObservableList<KategorijaColumn> kategorijaObservableList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -52,13 +50,13 @@ public class KategorijaTab implements Initializable {
         izmeni.setCellValueFactory(new PropertyValueFactory<>("izmeni"));
         obrisi.setStyle("-fx-alignment: CENTER;");
         obrisi.setCellValueFactory(new PropertyValueFactory<>("obrisi"));
-        kategorijaObservableList = FXCollections.observableArrayList();
         kategorijaObservableList.clear();
         for (Kategorija kategorija : AppObject.getInstance().getMojRestoran().getKategorijaArrayList()) {
             kategorijaObservableList.add(new KategorijaColumn(kategorija));
         }
 
         kategorija.setItems(kategorijaObservableList);
+        kategorija.setPlaceholder(new Label("Ne postoje kategorije"));
 
         AppObject.getInstance().getEventBus().register(this);
 
