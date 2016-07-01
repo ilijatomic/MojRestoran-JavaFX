@@ -70,6 +70,10 @@ public class MainForm implements Initializable {
                 root = FXMLLoader.load(getClass().getResource("../sto.fxml"));
                 main_bPane.setCenter(root);
                 break;
+            case 3:
+                root = FXMLLoader.load(getClass().getResource("../narudzbine.fxml"));
+                main_bPane.setCenter(root);
+                break;
         }
     }
 }

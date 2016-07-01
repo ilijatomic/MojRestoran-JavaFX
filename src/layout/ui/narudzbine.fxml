@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fillWidth="false" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.ui.controller.Narudzbine">
+   <children>
+      <VBox fillWidth="false">
+         <children>
+            <HBox fillHeight="false" spacing="10.0">
+               <children>
+                  <TextField fx:id="sime" maxWidth="-Infinity" prefWidth="120.0" promptText="ime" />
+                  <TextField fx:id="sprezime" layoutX="84.0" layoutY="20.0" maxWidth="-Infinity" prefWidth="120.0" promptText="prezime" />
+                  <TextField fx:id="semail" layoutX="261.0" layoutY="20.0" maxWidth="-Infinity" prefWidth="150.0" promptText="email" />
+                  <TextField fx:id="sbrtel" layoutX="438.0" layoutY="20.0" maxWidth="-Infinity" prefWidth="150.0" promptText="br tel" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </padding></HBox>
+            <HBox fillHeight="false" layoutX="10.0" layoutY="10.0" spacing="10.0">
+               <children>
+                  <ChoiceBox fx:id="skategorija" maxWidth="-Infinity" prefWidth="120.0" />
+                  <ChoiceBox fx:id="spodkategorija" layoutX="20.0" layoutY="10.0" maxWidth="-Infinity" prefWidth="120.0" />
+                  <ChoiceBox fx:id="sstavka" layoutX="130.0" layoutY="10.0" maxWidth="-Infinity" prefWidth="120.0" />
+                  <ChoiceBox fx:id="ssto" layoutX="240.0" layoutY="10.0" maxWidth="-Infinity" prefWidth="120.0" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" />
+               </padding>
+            </HBox>
+            <HBox fillHeight="false" layoutX="10.0" layoutY="57.0" spacing="10.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" />
+               </padding>
+               <children>
+                  <DatePicker fx:id="sdatumod" promptText="datum od" />
+                  <DatePicker fx:id="sdatumdo" layoutX="20.0" layoutY="10.0" promptText="datum do" />
+                  <Button mnemonicParsing="false" onAction="#ponisti" text="Ponisti" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <TableView fx:id="narudzbine">
+        <columns>
+          <TableColumn fx:id="sto" editable="false" maxWidth="50.0" prefWidth="50.0" resizable="false" sortable="false" text="Sto" />
+            <TableColumn fx:id="ime" editable="false" maxWidth="100.0" prefWidth="100.0" resizable="false" sortable="false" text="Ime" />
+            <TableColumn fx:id="prezime" editable="false" maxWidth="100.0" prefWidth="100.0" resizable="false" sortable="false" text="Prezime" />
+            <TableColumn fx:id="email" editable="false" maxWidth="150.0" prefWidth="150.0" resizable="false" sortable="false" text="email" />
+            <TableColumn fx:id="datum" editable="false" maxWidth="130.0" prefWidth="130.0" resizable="false" sortable="false" text="Datum" />
+            <TableColumn fx:id="ukupno" editable="false" maxWidth="75.0" prefWidth="75.0" resizable="false" sortable="false" text="Ukupno" />
+            <TableColumn fx:id="detalji" editable="false" maxWidth="75.0" prefWidth="75.0" resizable="false" sortable="false" text="Detalji" />
+        </columns>
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin>
+      </TableView>
+   </children>
+</VBox>
