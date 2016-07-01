@@ -96,6 +96,10 @@ public class DodajStavka implements Initializable {
                     cena.setStyle("-fx-border-color: red");
                     event.consume();
                 }
+                if (AppObject.getInstance().checkIfStavkaExists(naziv.getText())) {
+                    event.consume();
+                    ErrorDialog.show("Stavka", "Stavka sa unetim imenom vec postoji!");
+                }
             }
         });
 

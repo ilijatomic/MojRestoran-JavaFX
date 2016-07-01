@@ -63,15 +63,24 @@ public class StavkaTab implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Kategorija> observable, Kategorija oldValue, Kategorija newValue) {
                 selectedKategorija = kategorija.getValue();
-
+                podkategorija.getItems().clear();
+                podkategorija.getItems().add(new Podkategorija(null, "podkategorija", null));
+                if (selectedKategorija.getId() != null) {
+                    for (Podkategorija podkat : AppObject.getInstance().getMojRestoran().getPodkategorijaArrayList()) {
+                        if (podkat.getKategorija().getId().equals(selectedKategorija.getId()))
+                            podkategorija.getItems().add(podkat);
+                    }
+                } else {
+                    for (Podkategorija podkat : AppObject.getInstance().getMojRestoran().getPodkategorijaArrayList()) {
+                        podkategorija.getItems().add(podkat);
+                    }
+                }
+                pretraga();
+                podkategorija.getSelectionModel().selectFirst();
             }
         });
         kategorija.getSelectionModel().selectFirst();
 
-        podkategorija.getItems().add(new Podkategorija(null, "podkategorija", null));
-        for (Podkategorija podkat : AppObject.getInstance().getMojRestoran().getPodkategorijaArrayList()) {
-            podkategorija.getItems().add(podkat);
-        }
         podkategorija.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Podkategorija>() {
             @Override
             public void changed(ObservableValue<? extends Podkategorija> observable, Podkategorija oldValue, Podkategorija newValue) {
@@ -112,7 +121,7 @@ public class StavkaTab implements Initializable {
     }
 
     private void pretraga() {
-        if (selectedKategorija == null && selectedPodkategorija == null)
+        if (selectedKategorija == null || selectedPodkategorija == null)
             return;
 
         if (search.getText().isEmpty() && selectedKategorija.getId() == null && selectedPodkategorija.getId() == null) {

@@ -82,6 +82,15 @@ public class DodajKorisnika implements Initializable {
                     tip.setStyle("-fx-border-color: red");
                     event.consume();
                 }
+                if (id != null) {
+                    if (AppObject.getInstance().checkIfOtherUserExist(email.getText(), id)) {
+                        event.consume();
+                        ErrorDialog.show("Korisnik", "Korisnik sa unetim email vec postoji!");
+                    }
+                } else if (AppObject.getInstance().checkIfUserExists(email.getText())) {
+                    event.consume();
+                    ErrorDialog.show("Korisnik", "Korisnik sa unetim email vec postoji!");
+                }
             }
         });
 

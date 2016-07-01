@@ -123,4 +123,46 @@ public class AppObject {
                 return stavka;
         return null;
     }
+
+    public boolean checkIfUserExists(String email) {
+        for (Korisnik korisnik : mojRestoran.getKorisnikArrayList())
+            if (korisnik.getEmail().equals(email))
+                return true;
+        return false;
+    }
+
+    public boolean checkIfOtherUserExist(String email, String id) {
+        for (Korisnik korisnik : getMojRestoran().getKorisnikArrayList())
+            if (korisnik.getEmail().equals(email) && !korisnik.getId().equals(id))
+                return true;
+        return false;
+    }
+
+    public boolean checkIfKategorijaExists(String naziv) {
+        for (Kategorija kategorija : mojRestoran.getKategorijaArrayList())
+            if (kategorija.getNaziv().equals(naziv))
+                return true;
+        return false;
+    }
+
+    public boolean checkIfPodkategorijaExists(String naziv) {
+        for (Podkategorija podkategorija : mojRestoran.getPodkategorijaArrayList())
+            if (podkategorija.getNaziv().equals(naziv))
+                return true;
+        return false;
+    }
+
+    public boolean checkIfStavkaExists(String naziv) {
+        for (Stavka stavka : mojRestoran.getStavkaArrayList())
+            if (stavka.getNaziv().equals(naziv))
+                return true;
+        return false;
+    }
+
+    public boolean checkIfStoExists(String broj) {
+        for (Sto sto : mojRestoran.getStoArrayList())
+            if (sto.getBroj() == Integer.parseInt(broj))
+                return true;
+        return false;
+    }
 }

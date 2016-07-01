@@ -37,6 +37,9 @@
             <TableColumn fx:id="izmeni" editable="false" maxWidth="75.0" prefWidth="75.0" resizable="false" sortable="false" text="Izmeni" />
             <TableColumn fx:id="obrisi" editable="false" maxWidth="75.0" prefWidth="75.0" resizable="false" sortable="false" text="Obrisi" />
         </columns>
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin>
       </TableView>
    </children>
 </VBox>

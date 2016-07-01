@@ -45,6 +45,10 @@ public class DodajKategorija {
                 if (!Validation.checkTextFields(textFields)) {
                     event.consume();
                 }
+                if (AppObject.getInstance().checkIfKategorijaExists(naziv.getText())) {
+                    event.consume();
+                    ErrorDialog.show("Kategorija", "Kategorija sa unetim imenom vec postoji!");
+                }
             }
         });
 

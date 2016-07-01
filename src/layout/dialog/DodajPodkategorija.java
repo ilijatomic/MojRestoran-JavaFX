@@ -78,6 +78,10 @@ public class DodajPodkategorija implements Initializable {
                     kategorija.setStyle("-fx-border-color: red");
                     event.consume();
                 }
+                if (AppObject.getInstance().checkIfPodkategorijaExists(naziv.getText())) {
+                    event.consume();
+                    ErrorDialog.show("Podategorija", "Podategorija sa unetim imenom vec postoji!");
+                }
             }
         });
 
