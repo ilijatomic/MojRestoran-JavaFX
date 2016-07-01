@@ -34,6 +34,6 @@ public class Sto {
 
     @Override
     public String toString() {
-        return String.valueOf(broj);
+        return String.valueOf(broj == 0 ? "sto" : broj);
     }
 }

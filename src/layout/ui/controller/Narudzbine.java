@@ -8,13 +8,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.Kategorija;
-import model.Narudzbina;
+import model.*;
 import model.table.NarudzbinaColumn;
 import util.AppObject;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -34,11 +34,11 @@ public class Narudzbine implements Initializable {
     @FXML
     private ChoiceBox<Kategorija> skategorija;
     @FXML
-    private ChoiceBox<Kategorija> spokategorija;
+    private ChoiceBox<Podkategorija> spodkategorija;
     @FXML
-    private ChoiceBox<Kategorija> sstavka;
+    private ChoiceBox<Stavka> sstavka;
     @FXML
-    private ChoiceBox<Kategorija> ssto;
+    private ChoiceBox<Sto> ssto;
     @FXML
     private DatePicker sdatumod;
     @FXML
@@ -86,17 +86,139 @@ public class Narudzbine implements Initializable {
             narudzbinaColumnObservableList.add(new NarudzbinaColumn(temp));
         }
         narudzbine.setItems(narudzbinaColumnObservableList);
+        narudzbine.setPlaceholder(new Label("Ne postoje narudzbine"));
+
+        skategorija.getItems().add(new Kategorija(null, "kategorija"));
+        for (Kategorija kat : AppObject.getInstance().getMojRestoran().getKategorijaArrayList()) {
+            skategorija.getItems().add(kat);
+        }
+        skategorija.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Kategorija>() {
+            @Override
+            public void changed(ObservableValue<? extends Kategorija> observable, Kategorija oldValue, Kategorija newValue) {
+                pretraga();
+            }
+        });
+        skategorija.getSelectionModel().selectFirst();
+
+        spodkategorija.getItems().add(new Podkategorija(null, "podkategorija", null));
+        for (Podkategorija temp : AppObject.getInstance().getMojRestoran().getPodkategorijaArrayList()) {
+            spodkategorija.getItems().add(temp);
+        }
+        spodkategorija.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Podkategorija>() {
+            @Override
+            public void changed(ObservableValue<? extends Podkategorija> observable, Podkategorija oldValue, Podkategorija newValue) {
+                pretraga();
+            }
+        });
+        spodkategorija.getSelectionModel().selectFirst();
+
+        sstavka.getItems().add(new Stavka(null, "stavka", 0, null));
+        for (Stavka temp : AppObject.getInstance().getMojRestoran().getStavkaArrayList()) {
+            sstavka.getItems().add(temp);
+        }
+        sstavka.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Stavka>() {
+            @Override
+            public void changed(ObservableValue<? extends Stavka> observable, Stavka oldValue, Stavka newValue) {
+                pretraga();
+            }
+        });
+        sstavka.getSelectionModel().selectFirst();
+
+        ssto.getItems().add(new Sto(null, 0));
+        for (Sto temp : AppObject.getInstance().getMojRestoran().getStoArrayList()) {
+            ssto.getItems().add(temp);
+        }
+        ssto.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Sto>() {
+            @Override
+            public void changed(ObservableValue<? extends Sto> observable, Sto oldValue, Sto newValue) {
+                pretraga();
+            }
+        });
+        ssto.getSelectionModel().selectFirst();
 
         sdatumod.valueProperty().addListener(new ChangeListener<LocalDate>() {
             @Override
             public void changed(ObservableValue<? extends LocalDate> observable, LocalDate oldValue, LocalDate newValue) {
-                System.out.println(sdatumod.getValue());
+                pretraga();
             }
         });
 
+        sdatumdo.valueProperty().addListener(new ChangeListener<LocalDate>() {
+            @Override
+            public void changed(ObservableValue<? extends LocalDate> observable, LocalDate oldValue, LocalDate newValue) {
+                pretraga();
+            }
+        });
+    }
+
+    private void pretraga() {
+        if (skategorija.getValue() == null || spodkategorija.getValue() == null || sstavka.getValue() == null || ssto.getValue() == null)
+            return;
+
+        narudzbinaColumnObservableList.clear();
+        for (Narudzbina temp : AppObject.getInstance().getMojRestoran().getNarudzbinaArrayList()) {
+            if (!sime.getText().isEmpty() && !temp.getKorisnik().getIme().toLowerCase().startsWith(sime.getText().toLowerCase()))
+                continue;
+            if (!sprezime.getText().isEmpty() && !temp.getKorisnik().getPrezime().toLowerCase().startsWith(sprezime.getText().toLowerCase()))
+                continue;
+            if (!semail.getText().isEmpty() && !temp.getKorisnik().getEmail().toLowerCase().startsWith(semail.getText().toLowerCase()))
+                continue;
+            if (!sbrtel.getText().isEmpty() && !temp.getKorisnik().getBrTel().toLowerCase().startsWith(sbrtel.getText().toLowerCase()))
+                continue;
+            if (ssto.getValue().getId() != null && temp.getSto().getBroj() != ssto.getValue().getBroj())
+                continue;
+            if (skategorija.getValue().getId() != null && !checkNarudzbinaKategorija(temp))
+                continue;
+            if (spodkategorija.getValue().getId() != null && !checkNarudzbinaPodkategorija(temp))
+                continue;
+            if (sstavka.getValue().getId() != null && !checkNarudzbinaStavka(temp))
+                continue;
+            if (sdatumod.getValue() != null && new Date(temp.getDatum()).before(java.sql.Date.valueOf(sdatumod.getValue().atTime(0, 0).toLocalDate())))
+                continue;
+            if (sdatumdo.getValue() != null && new Date(temp.getDatum()).after(java.sql.Date.valueOf(sdatumdo.getValue().plusDays(1))))
+                continue;
+
+            narudzbinaColumnObservableList.add(new NarudzbinaColumn(temp));
+        }
+        narudzbine.refresh();
     }
 
     public void ponisti() {
+        sime.clear();
+        sprezime.clear();
+        semail.clear();
+        sbrtel.clear();
+        skategorija.getSelectionModel().selectFirst();
+        spodkategorija.getSelectionModel().selectFirst();
+        sstavka.getSelectionModel().selectFirst();
+        ssto.getSelectionModel().selectFirst();
+        sdatumod.setValue(null);
+        sdatumdo.setValue(null);
 
+        pretraga();
+    }
+
+    private boolean checkNarudzbinaKategorija(Narudzbina narudzbina) {
+        for (Racun racun : narudzbina.getRacunArrayList())
+            for (NaruceneStavke naruceneStavke : racun.getNaplaceneStavke())
+                if (naruceneStavke.getStavka().getPodkategorija().getKategorija().getId().equals(skategorija.getValue().getId()))
+                    return true;
+        return false;
+    }
+
+    private boolean checkNarudzbinaPodkategorija(Narudzbina narudzbina) {
+        for (Racun racun : narudzbina.getRacunArrayList())
+            for (NaruceneStavke naruceneStavke : racun.getNaplaceneStavke())
+                if (naruceneStavke.getStavka().getPodkategorija().getId().equals(spodkategorija.getValue().getId()))
+                    return true;
+        return false;
+    }
+
+    private boolean checkNarudzbinaStavka(Narudzbina narudzbina) {
+        for (Racun racun : narudzbina.getRacunArrayList())
+            for (NaruceneStavke naruceneStavke : racun.getNaplaceneStavke())
+                if (naruceneStavke.getStavka().getId().equals(sstavka.getValue().getId()))
+                    return true;
+        return false;
     }
 }
