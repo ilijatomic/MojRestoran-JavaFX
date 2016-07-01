@@ -75,8 +75,8 @@ public class StavkaTab implements Initializable {
                         podkategorija.getItems().add(podkat);
                     }
                 }
-                pretraga();
                 podkategorija.getSelectionModel().selectFirst();
+                pretraga();
             }
         });
         kategorija.getSelectionModel().selectFirst();
@@ -85,6 +85,15 @@ public class StavkaTab implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Podkategorija> observable, Podkategorija oldValue, Podkategorija newValue) {
                 selectedPodkategorija = podkategorija.getValue();
+                // TODO try to implement this
+                /*if (selectedPodkategorija.getId() != null) {
+                    for (Kategorija kat : kategorija.getItems()) {
+                        if (kat.getId() != null && selectedPodkategorija.getKategorija().getId().equals(kat.getId()))
+                            kategorija.getSelectionModel().select(kat);
+                    }
+                } else {
+                    kategorija.getSelectionModel().selectFirst();
+                }*/
                 pretraga();
             }
         });

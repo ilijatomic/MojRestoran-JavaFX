@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by Ilija on 1/2/2016.
@@ -9,14 +8,14 @@ import java.util.Date;
 public class Racun {
 
     private String id;
-    private Date datum;
+    private Long datum;
     private double cena;
     private ArrayList<NaruceneStavke> naplaceneStavke;
 
     public Racun() {
     }
 
-    public Racun(String id, Date datum, double cena, ArrayList<NaruceneStavke> naplaceneStavke) {
+    public Racun(String id, Long datum, double cena, ArrayList<NaruceneStavke> naplaceneStavke) {
         this.id = id;
         this.datum = datum;
         this.cena = cena;
@@ -31,11 +30,11 @@ public class Racun {
         this.id = id;
     }
 
-    public Date getDatum() {
+    public Long getDatum() {
         return datum;
     }
 
-    public void setDatum(Date datum) {
+    public void setDatum(Long datum) {
         this.datum = datum;
     }
 
