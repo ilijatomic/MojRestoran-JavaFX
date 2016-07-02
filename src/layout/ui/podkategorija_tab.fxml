@@ -10,15 +10,9 @@
         <HBox spacing="15.0">
             <children>
                 <Button mnemonicParsing="false" onAction="#dodaj_podkategoriju" text="Dodaj">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
                 </Button>
                 <ChoiceBox fx:id="kategorija" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" />
                 <TextField fx:id="search" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" promptText="naziv">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
                 </TextField>
             </children>
             <VBox.margin>

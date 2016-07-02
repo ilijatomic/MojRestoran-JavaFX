@@ -10,14 +10,8 @@
         <HBox spacing="15.0">
             <children>
                 <Button mnemonicParsing="false" onAction="#dodaj_kategoriju" text="Dodaj">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
                 </Button>
                 <TextField fx:id="search" prefWidth="200.0" promptText="naziv">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
                 </TextField>
             </children>
             <VBox.margin>

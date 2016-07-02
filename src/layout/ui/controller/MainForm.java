@@ -25,8 +25,6 @@ public class MainForm implements Initializable {
 
     @FXML
     private BorderPane main_bPane;
-    @FXML
-    private ListView<String> main_list;
 
     public void showProfil() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../profile.fxml"));
@@ -35,45 +33,33 @@ public class MainForm implements Initializable {
 
     public void logout(ActionEvent event) throws IOException {
         AppObject.getInstance().setUlogovanKorisnik(null);
-        Parent root = FXMLLoader.load(getClass().getResource("../ui/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../login.fxml"));
         StageUtils.getStageFromEvent(event).setScene(StageUtils.createMainScene(root));
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        main_list.getItems().addAll(menuList);
-        main_list.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                try {
-                    showMenuItem(main_list.getSelectionModel().getSelectedIndex());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        // TODO show meni on init, once user loged in
+        try {
+            showMeni();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void showMenuItem(int item) throws IOException {
-        Parent root;
-        switch (item) {
-            case 0:
-                root = FXMLLoader.load(getClass().getResource("../meni.fxml"));
-                main_bPane.setCenter(root);
-                break;
-            case 1:
-                root = FXMLLoader.load(getClass().getResource("../korisnici.fxml"));
-                main_bPane.setCenter(root);
-                break;
-            case 2:
-                root = FXMLLoader.load(getClass().getResource("../sto.fxml"));
-                main_bPane.setCenter(root);
-                break;
-            case 3:
-                root = FXMLLoader.load(getClass().getResource("../narudzbine.fxml"));
-                main_bPane.setCenter(root);
-                break;
-        }
+    public void showMeni() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../meni.fxml"));
+        main_bPane.setCenter(root);
+    }
+    public void showKorisnici() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../korisnici.fxml"));
+        main_bPane.setCenter(root);
+    }
+    public void showStolovi() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../sto.fxml"));
+        main_bPane.setCenter(root);
+    }
+    public void showNarudzbine() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../narudzbine.fxml"));
+        main_bPane.setCenter(root);
     }
 }

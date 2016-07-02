@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<DialogPane fx:id="dialogPane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.dialog.NarudzbinaDetlaji">
+   <content>
+      <VBox fillWidth="false">
+          <children>
+                <Label fx:id="narudzbinasto" minHeight="-Infinity" prefHeight="40.0" text="Label">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+                <Label fx:id="datum" minHeight="-Infinity" prefHeight="40.0" text="Label">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+                <Label fx:id="konobar" minHeight="-Infinity" prefHeight="40.0" text="Label">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+              <ListView fx:id="detalji" maxHeight="-Infinity" prefHeight="350.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></ListView>
+          </children>
+      </VBox>
+   </content>
+</DialogPane>

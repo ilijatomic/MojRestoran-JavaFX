@@ -48,7 +48,6 @@ public class AppObject {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mojRestoran = dataSnapshot.getValue(MojRestoran.class);
                 System.out.println("FIREBASE_DATABASE_DOWNLOAD");
-                checkLogin("ilija@email.com", "qwe");
             }
 
             @Override
@@ -164,5 +163,12 @@ public class AppObject {
             if (sto.getBroj() == Integer.parseInt(broj))
                 return true;
         return false;
+    }
+
+    public Narudzbina getNarudzbinaById(String id) {
+        for (Narudzbina narudzbina : mojRestoran.getNarudzbinaArrayList())
+            if (narudzbina.getId().equals(id))
+                return narudzbina;
+        return null;
     }
 }

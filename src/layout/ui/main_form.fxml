@@ -1,26 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
-<BorderPane fx:id="main_bPane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="layout.ui.controller.MainForm">
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane fx:id="main_bPane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.ui.controller.MainForm">
     <top>
-        <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <ToolBar minWidth="1010.0" nodeOrientation="LEFT_TO_RIGHT" BorderPane.alignment="CENTER">
             <items>
-                <Button mnemonicParsing="false" onAction="#logout" text="Izloguj se"/>
-                <Button mnemonicParsing="false" onAction="#showProfil" text="Profil"/>
+            <GridPane alignment="CENTER" minWidth="1010.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <HBox fillHeight="false" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#showMeni" text="Meni restorana" />
+                        <Button mnemonicParsing="false" onAction="#showKorisnici" text="Korisnici" />
+                        <Button layoutX="106.0" layoutY="10.0" mnemonicParsing="false" onAction="#showStolovi" text="Stolovi" />
+                        <Button layoutX="116.0" layoutY="20.0" mnemonicParsing="false" onAction="#showNarudzbine" text="Narudzbine" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" fillHeight="false" spacing="10.0" GridPane.columnIndex="1">
+                     <children>
+                            <Button mnemonicParsing="false" onAction="#logout" text="Izloguj se" />
+                            <Button mnemonicParsing="false" onAction="#showProfil" text="Profil" />
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
             </items>
         </ToolBar>
     </top>
-    <left>
-        <ListView fx:id="main_list" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0"
-                  BorderPane.alignment="CENTER">
-            <BorderPane.margin>
-                <Insets/>
-            </BorderPane.margin>
-        </ListView>
-    </left>
 </BorderPane>

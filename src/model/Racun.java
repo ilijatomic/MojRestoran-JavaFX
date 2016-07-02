@@ -55,4 +55,23 @@ public class Racun {
     public void setNaplaceneStavke(ArrayList<NaruceneStavke> naplaceneStavke) {
         this.naplaceneStavke = naplaceneStavke;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuffer = new StringBuilder();
+        stringBuffer
+                .append("Ukupno racun: ")
+                .append(cena)
+                .append("\n");
+        for (NaruceneStavke temp : naplaceneStavke) {
+            stringBuffer
+                    .append("\t")
+                    .append(temp.getKolicina())
+                    .append("x ")
+                    .append(temp.getStavka().getNaziv())
+                    .append("\n");
+        }
+
+        return stringBuffer.toString();
+    }
 }
