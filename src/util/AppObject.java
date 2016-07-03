@@ -64,7 +64,7 @@ public class AppObject {
     public boolean checkLogin(String email, String password) {
         if (!email.isEmpty() && !password.isEmpty()) {
             for (Korisnik korisnik : mojRestoran.getKorisnikArrayList()) {
-                if (korisnik.getEmail().equals(email) && korisnik.getPassword().equals(password)) {
+                if (korisnik.getEmail().equals(email) && korisnik.getPassword().equals(password) && korisnik.getTip().equals("admin")) {
                     setUlogovanKorisnik(korisnik);
                     return true;
                 }
