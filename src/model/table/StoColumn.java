@@ -35,7 +35,7 @@ public class StoColumn {
         izmeni.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../layout/dialog/kategorija.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../layout/dialog/sto.fxml"));
                 try {
                     loader.load();
                 } catch (IOException e) {
@@ -50,9 +50,9 @@ public class StoColumn {
             @Override
             public void handle(MouseEvent event) {
                 if (AlertDialog.show("Obrisi sto", "Da li ste sigurni da zelite da obriste sto?").get() == ButtonType.OK) {
-                    for (Kategorija kategorija : AppObject.getInstance().getMojRestoran().getKategorijaArrayList()) {
-                        if (kategorija.getId().equals(id)) {
-                            AppObject.getInstance().getMojRestoran().getKategorijaArrayList().remove(kategorija);
+                    for (Sto sto : AppObject.getInstance().getMojRestoran().getStoArrayList()) {
+                        if (sto.getId().equals(id)) {
+                            AppObject.getInstance().getMojRestoran().getStoArrayList().remove(sto);
                             AppObject.getInstance().updateDatabase();
                             AppObject.getInstance().getEventBus().post(new DataChange(DataChange.Type.STO));
                             break;
